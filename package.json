@@ -1,0 +1,15 @@
+{
+  "name": "claude-code-todo",
+  "version": "1.0.0",
+  "description": "A tiny to-do app used to learn Claude Code",
+  "type": "module",
+  "main": "src/server.js",
+  "scripts": {
+    "start": "node src/server.js",
+    "dev": "node --watch src/server.js",
+    "test": "node --test tests/"
+  },
+  "dependencies": {
+    "express": "^4.19.2"
+  }
+}
