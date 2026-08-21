@@ -67,7 +67,7 @@ const abilityNames = {
 
 .character-hero {
   position: relative;
-  min-height: 640px;
+  min-height: calc(100vh - var(--vp-nav-height) - var(--vp-layout-top-height, 0px) - 3rem);
   display: flex;
   align-items: center;
   justify-content: flex-end;
@@ -91,18 +91,18 @@ const abilityNames = {
   z-index: 1;
   background: linear-gradient(
     to right,
-    transparent 28%,
-    rgba(10, 10, 14, 0.45) 50%,
-    rgba(8, 8, 10, 0.85) 72%,
-    rgba(5, 5, 6, 0.94) 100%
+    transparent 15%,
+    rgba(10, 10, 14, 0.45) 35%,
+    rgba(8, 8, 10, 0.85) 58%,
+    rgba(5, 5, 6, 0.95) 100%
   );
 }
 
 .hero-content {
   position: relative;
   z-index: 2;
-  width: min(560px, 100%);
-  padding: 3rem 3rem 3.5rem;
+  width: min(720px, 100%);
+  padding: 3rem 3.5rem 3.5rem;
   color: #fff;
 }
 
@@ -121,8 +121,8 @@ const abilityNames = {
 
 .hero-stats {
   display: flex;
-  flex-wrap: wrap;
-  gap: 0.6rem;
+  flex-wrap: nowrap;
+  gap: 0.5rem;
   margin: 1.5rem 0 1.75rem;
 }
 
@@ -130,8 +130,9 @@ const abilityNames = {
   display: flex;
   flex-direction: column;
   align-items: center;
-  min-width: 60px;
-  padding: 0.5rem 0.65rem;
+  flex: 1 1 0;
+  min-width: 0;
+  padding: 0.5rem 0.4rem;
   border: 1px solid rgba(255, 255, 255, 0.3);
   border-radius: 8px;
   background: rgba(255, 255, 255, 0.08);
@@ -204,7 +205,13 @@ const abilityNames = {
     opacity: 0.75;
   }
 
+  .hero-stats {
+    flex-wrap: wrap;
+  }
+
   .hero-stat {
+    flex: 0 1 auto;
+    min-width: 56px;
     border-color: var(--vp-c-border);
     background: var(--vp-c-bg-soft);
     color: var(--vp-c-text-1);
