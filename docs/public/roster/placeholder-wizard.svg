@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 640" width="480" height="640">
+  <defs>
+    <linearGradient id="bgWizard" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#2a3350" />
+      <stop offset="1" stop-color="#151a2b" />
+    </linearGradient>
+  </defs>
+  <rect width="480" height="640" fill="url(#bgWizard)" />
+  <path d="M240 90 L340 260 L140 260 Z" fill="#4b5a8a" />
+  <circle cx="240" cy="290" r="90" fill="#8a92b5" />
+  <path d="M150 640 C150 470, 330 470, 330 640 Z" fill="#3a4468" />
+  <circle cx="212" cy="290" r="7" fill="#151a2b" />
+  <circle cx="268" cy="290" r="7" fill="#151a2b" />
+  <circle cx="240" cy="95" r="10" fill="#e8d9ab" />
+</svg>

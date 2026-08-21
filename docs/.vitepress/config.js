@@ -24,6 +24,7 @@ export default defineConfig(({ command }) => ({
     nav: [
       { text: "Home", link: "/" },
       { text: "Map", link: "/map" },
+      { text: "Roster", link: "/roster/" },
       { text: "Recaps", link: "/recaps/" },
       { text: "Lore", link: "/lore/" },
       { text: "Rules", link: "/rules/" },

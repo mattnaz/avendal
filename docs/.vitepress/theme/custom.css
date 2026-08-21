@@ -1,0 +1,20 @@
+/* Widen the content column on pages tagged with pageClass: wide-page
+   (e.g. the roster grid), which don't want the narrow prose column
+   VitePress defaults to for regular doc pages. */
+@media (min-width: 960px) {
+  .wide-page .VPDoc:not(.has-sidebar) .container {
+    max-width: var(--vp-layout-max-width);
+  }
+
+  .wide-page .VPDoc:not(.has-sidebar) .content {
+    max-width: calc(var(--vp-layout-max-width) - 240px);
+  }
+}
+
+/* VPDoc.has-aside caps .content-container at 688px unconditionally
+   (not just >=960px), independent of the .content/.container overrides
+   above — override it too, or the grid stays stuck at 688px wide. */
+.wide-page .VPDoc.has-aside .content-container,
+.wide-page .content-container {
+  max-width: none;
+}

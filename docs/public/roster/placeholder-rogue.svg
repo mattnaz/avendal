@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 640" width="480" height="640">
+  <defs>
+    <linearGradient id="bgRogue" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#2c3e2d" />
+      <stop offset="1" stop-color="#16201a" />
+    </linearGradient>
+  </defs>
+  <rect width="480" height="640" fill="url(#bgRogue)" />
+  <circle cx="240" cy="230" r="100" fill="#3f5a44" />
+  <path d="M140 640 C140 470, 340 470, 340 640 Z" fill="#3f5a44" />
+  <path d="M170 210 Q240 150 310 210 L300 260 Q240 300 180 260 Z" fill="#1c2b1e" />
+  <circle cx="205" cy="230" r="8" fill="#e8d9ab" />
+  <circle cx="275" cy="230" r="8" fill="#e8d9ab" />
+</svg>
