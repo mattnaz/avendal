@@ -97,7 +97,7 @@ const STAGE_WIDTH = 1000;
 const STAGE_HEIGHT = 700;
 const isDev = import.meta.env.DEV;
 
-const mapSrc = withBase("/map/avendal-map.svg");
+const mapSrc = withBase("/map/Avendal.jpg");
 const viewport = ref(null);
 const stage = ref(null);
 let instance = null;
