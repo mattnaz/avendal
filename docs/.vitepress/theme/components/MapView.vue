@@ -54,34 +54,34 @@
           <span class="map-pin-label">{{ pin.label }}</span>
         </component>
       </div>
-    </div>
 
-    <div v-if="formState" class="pin-form-panel">
-      <h3>{{ formState.id ? "Edit pin" : "New pin" }}</h3>
+      <div v-if="formState" class="pin-form-panel">
+        <h3>{{ formState.id ? "Edit pin" : "New pin" }}</h3>
 
-      <label class="pin-form-field">
-        Label
-        <input v-model="formState.label" type="text" placeholder="e.g. Silverwatch Keep" />
-      </label>
+        <label class="pin-form-field">
+          Label
+          <input v-model="formState.label" type="text" placeholder="e.g. Silverwatch Keep" />
+        </label>
 
-      <label class="pin-form-field">
-        Links to
-        <select v-model="formState.link">
-          <option value="" disabled>Select a lore page…</option>
-          <option v-for="page in lorePages" :key="page.link" :value="page.link">
-            {{ page.title }}
-          </option>
-        </select>
-      </label>
+        <label class="pin-form-field">
+          Links to
+          <select v-model="formState.link">
+            <option value="" disabled>Select a lore page…</option>
+            <option v-for="page in lorePages" :key="page.link" :value="page.link">
+              {{ page.title }}
+            </option>
+          </select>
+        </label>
 
-      <p v-if="formError" class="pin-form-error">{{ formError }}</p>
+        <p v-if="formError" class="pin-form-error">{{ formError }}</p>
 
-      <div class="pin-form-actions">
-        <button type="button" class="map-btn" :disabled="!canSave" @click="savePin">Save</button>
-        <button v-if="formState.id" type="button" class="map-btn map-btn-danger" @click="deletePin(formState.id)">
-          Delete
-        </button>
-        <button type="button" class="map-btn" @click="cancelForm">Cancel</button>
+        <div class="pin-form-actions">
+          <button type="button" class="map-btn" :disabled="!canSave" @click="savePin">Save</button>
+          <button v-if="formState.id" type="button" class="map-btn map-btn-danger" @click="deletePin(formState.id)">
+            Delete
+          </button>
+          <button type="button" class="map-btn" @click="cancelForm">Cancel</button>
+        </div>
       </div>
     </div>
   </div>
@@ -277,14 +277,19 @@ async function persistPins(updated, verb) {
 .map-page {
   display: flex;
   flex-direction: column;
-  gap: 0.75rem;
+  /* fills exactly the viewport below VitePress's nav bar, no page scroll */
+  height: calc(100vh - var(--vp-nav-height) - var(--vp-layout-top-height, 0px));
 }
 
 .map-toolbar {
+  flex: 0 0 auto;
   display: flex;
   align-items: center;
   flex-wrap: wrap;
   gap: 0.5rem;
+  padding: 0.6rem 1rem;
+  border-bottom: 1px solid var(--vp-c-border);
+  background: var(--vp-c-bg);
 }
 
 .map-toolbar-sep {
@@ -348,10 +353,8 @@ async function persistPins(updated, verb) {
   position: relative;
   overflow: hidden;
   width: 100%;
-  height: 70vh;
-  min-height: 420px;
-  border: 1px solid var(--vp-c-border);
-  border-radius: 8px;
+  flex: 1 1 auto;
+  min-height: 0;
   background: var(--vp-c-bg-soft);
   touch-action: none;
   cursor: grab;
@@ -433,15 +436,16 @@ async function persistPins(updated, verb) {
 }
 
 .pin-form-panel {
-  position: sticky;
+  position: absolute;
+  right: 1rem;
   bottom: 1rem;
-  align-self: flex-end;
-  width: min(320px, 100%);
+  z-index: 20;
+  width: min(320px, calc(100% - 2rem));
   padding: 1rem;
   border: 1px solid var(--vp-c-border);
   border-radius: 8px;
   background: var(--vp-c-bg-elv);
-  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.25);
   display: flex;
   flex-direction: column;
   gap: 0.6rem;
