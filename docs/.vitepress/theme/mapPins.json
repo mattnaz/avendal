@@ -2,155 +2,155 @@
   {
     "id": "tharn-ulihm",
     "label": "Tharn Ulihm",
-    "x": 47.8,
-    "y": 45.1,
+    "x": 47.5,
+    "y": 48,
     "link": "/lore/tharn-ulihm"
   },
   {
     "id": "kil-danihm",
     "label": "Kil Danihm",
-    "x": 44.8,
-    "y": 49,
+    "x": 43.6,
+    "y": 50.9,
     "link": "/lore/kil-danihm"
   },
   {
     "id": "dim-olihm",
     "label": "Dim Olihm",
-    "x": 43.3,
-    "y": 53.2,
+    "x": 41.6,
+    "y": 55,
     "link": "/lore/dim-olihm"
   },
   {
     "id": "wildekeep",
     "label": "Wildekeep",
-    "x": 59.5,
-    "y": 44.1,
+    "x": 57.7,
+    "y": 48.1,
     "link": "/lore/wildekeep"
   },
   {
     "id": "bheraldur",
     "label": "Bheraldur",
-    "x": 53,
-    "y": 55.3,
+    "x": 54.8,
+    "y": 57.2,
     "link": "/lore/bheraldur"
   },
   {
     "id": "thel-torum",
     "label": "Thel Torum",
-    "x": 50,
-    "y": 66.8,
+    "x": 54.2,
+    "y": 66.2,
     "link": "/lore/thel-torum"
   },
   {
     "id": "kinhal",
     "label": "Kinhal",
-    "x": 91.5,
-    "y": 62.3,
+    "x": 90.9,
+    "y": 63.1,
     "link": "/lore/kinhal"
   },
   {
     "id": "benwick",
     "label": "Benwick",
-    "x": 86,
-    "y": 64,
+    "x": 87.1,
+    "y": 65.9,
     "link": "/lore/benwick"
   },
   {
     "id": "broadmoor",
     "label": "Broadmoor",
-    "x": 95,
-    "y": 64,
+    "x": 95.7,
+    "y": 65.2,
     "link": "/lore/broadmoor"
   },
   {
     "id": "ariscar",
     "label": "Ariscar",
-    "x": 64.5,
-    "y": 67.5,
+    "x": 70.1,
+    "y": 67.9,
     "link": "/lore/ariscar"
   },
   {
     "id": "ghatton",
-    "label": "Ghatton",
-    "x": 70,
-    "y": 68.9,
+    "label": "Chatton",
+    "x": 76.5,
+    "y": 69.7,
     "link": "/lore/ghatton"
   },
   {
     "id": "whitemill",
     "label": "Whitemill",
-    "x": 64.5,
-    "y": 70.7,
+    "x": 69.9,
+    "y": 71.3,
     "link": "/lore/whitemill"
   },
   {
     "id": "riverwood",
     "label": "Riverwood",
-    "x": 78,
-    "y": 73.8,
+    "x": 88.5,
+    "y": 74,
     "link": "/lore/riverwood"
   },
   {
     "id": "grendale",
     "label": "Grendale",
-    "x": 49.8,
-    "y": 78.4,
+    "x": 51.5,
+    "y": 78.5,
     "link": "/lore/grendale"
   },
   {
     "id": "everfaire",
     "label": "Everfaire",
-    "x": 54.8,
-    "y": 77.9,
+    "x": 55.7,
+    "y": 79.2,
     "link": "/lore/everfaire"
   },
   {
     "id": "springshade",
     "label": "Springshade",
-    "x": 34.8,
-    "y": 79.1,
+    "x": 35.2,
+    "y": 81.2,
     "link": "/lore/springshade"
   },
   {
     "id": "auldemoor",
     "label": "Auldemoor",
-    "x": 41.3,
-    "y": 81.2,
+    "x": 42.3,
+    "y": 84.4,
     "link": "/lore/auldemoor"
   },
   {
     "id": "threaders-hollow",
     "label": "Threader's Hollow",
     "x": 59.8,
-    "y": 83.3,
+    "y": 83.8,
     "link": "/lore/threaders-hollow"
   },
   {
     "id": "avendal",
     "label": "Avendal",
-    "x": 66.5,
-    "y": 84.7,
+    "x": 69.4,
+    "y": 84,
     "link": "/lore/avendal-city"
   },
   {
     "id": "blackharbour",
     "label": "Blackharbour",
-    "x": 51,
-    "y": 86.4,
+    "x": 50.5,
+    "y": 88.4,
     "link": "/lore/blackharbour"
   },
   {
     "id": "lifford",
     "label": "Lifford",
-    "x": 67.3,
-    "y": 90.3,
+    "x": 68.2,
+    "y": 92,
     "link": "/lore/lifford"
   },
   {
     "id": "frostfel",
     "label": "Frostfel",
     "x": 53.3,
-    "y": 13.2,
+    "y": 18.4,
     "link": "/lore/frostfel"
   }
 ]

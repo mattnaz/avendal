@@ -12,6 +12,7 @@
     "panzoom": "^9.4.3"
   },
   "devDependencies": {
+    "@milkdown/crepe": "^7.22.1",
     "vitepress": "^1.3.4"
   }
 }
