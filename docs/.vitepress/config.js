@@ -1,9 +1,24 @@
 import { defineConfig } from "vitepress";
+import { pinEditorApi } from "./pinEditorApi.js";
 
-export default defineConfig({
+export default defineConfig(({ command }) => ({
   title: "Avendal",
   description: "Session recaps, lore, and house rules for the Avendal campaign",
   base: "/avendal/",
+
+  vite: {
+    // Only serves the pin editor's read/write endpoints during `vitepress dev`;
+    // absent from the production build, so it never ships to the deployed site.
+    plugins: command === "serve" ? [pinEditorApi()] : [],
+    server: {
+      watch: {
+        // The pin editor writes here directly; without this, Vite's watcher
+        // hot-reloads MapView.vue on every save (it statically imports this
+        // file) and wipes the component's local edit-mode state.
+        ignored: ["**/docs/.vitepress/theme/mapPins.json"],
+      },
+    },
+  },
 
   themeConfig: {
     nav: [
@@ -52,4 +67,4 @@ export default defineConfig({
       provider: "local",
     },
   },
-});
+}));

@@ -1,7 +1,7 @@
 // x/y are percentages (0-100) positioned over the map image.
-export const pins = [
-  { id: "avendal-city", label: "Avendal City", x: 50, y: 55, link: "/lore/avendal-city" },
-  { id: "whispering-woods", label: "Whispering Woods", x: 20, y: 29, link: "/lore/whispering-woods" },
-  { id: "stonepeak-mountains", label: "Stonepeak Mountains", x: 79, y: 21, link: "/lore/stonepeak-mountains" },
-  { id: "blackmire-swamp", label: "Blackmire Swamp", x: 34, y: 77, link: "/lore/blackmire-swamp" },
-];
+// Edited by hand, or via the in-browser pin editor (Edit Mode on the map
+// page, only available while running `npm run dev`) which writes straight
+// back to mapPins.json.
+import pins from "./mapPins.json";
+
+export { pins };

@@ -24,6 +24,7 @@ npm run preview
 - `docs/recaps/` — one file per session, linked from `docs/recaps/index.md`
 - `docs/lore/` — world info, factions, NPCs
 - `docs/rules/` — house rules and rulings
+- `docs/map.md` — interactive map (pan/zoom, pins linking to lore pages)
 - `docs/.vitepress/config.js` — site nav, sidebar, and title
 
 ## Publishing
@@ -35,3 +36,5 @@ Pushing to `master` triggers `.github/workflows/deploy.yml`, which builds the si
 - **New recap:** add `docs/recaps/session-NN.md`, then link it from `docs/recaps/index.md`.
 - **New lore page:** add a `.md` file under `docs/lore/`, then link it from `docs/lore/index.md`.
 - **New rule:** add to `docs/rules/house-rules.md`, or create a new page under `docs/rules/` and link it from `docs/rules/index.md`.
+- **Map pins:** while running `npm run dev`, open `/map` and click **Edit pins**, then **+ Add pin** and click a spot on the map. Pick a lore page from the dropdown and save — it writes straight to `docs/.vitepress/theme/mapPins.json`. Click an existing pin in edit mode to move its link/label or delete it. This editor only exists in dev mode; it's not part of the deployed site.
+- **Real map image:** replace `docs/public/map/avendal-map.svg` with your own image, update `mapSrc` in `docs/.vitepress/theme/components/MapView.vue` if the filename changes, then re-place pins to match.
