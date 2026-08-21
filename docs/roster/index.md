@@ -5,6 +5,8 @@ pageClass: wide-page
 
 # Party Roster
 
+## Current Party
+
 The heroes currently adventuring through Avendal. Click a character for their full sheet.
 
 <Roster />
