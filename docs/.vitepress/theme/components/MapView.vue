@@ -46,8 +46,12 @@
           :type="editMode ? 'button' : undefined"
           :href="editMode ? undefined : withBase(pin.link)"
           class="map-pin"
+          :class="{ 'is-draggable': editMode }"
           :style="{ left: pin.x + '%', top: pin.y + '%' }"
-          :title="pin.label"
+          :title="editMode ? `${pin.label} (drag to move)` : pin.label"
+          @pointerdown="onPinPointerDown($event, pin)"
+          @pointermove="onPinPointerMove($event, pin)"
+          @pointerup="onPinPointerUp($event, pin)"
           @click="onPinClick($event, pin)"
         >
           <span class="map-pin-dot" />
@@ -112,6 +116,8 @@ const saveStatus = ref("");
 const lorePages = ref([]);
 let pointerDownPos = null;
 let saveStatusTimer = null;
+let dragState = null;
+let suppressNextClick = false;
 
 const canSave = computed(() => !!formState.value?.label && !!formState.value?.link);
 
@@ -202,9 +208,44 @@ function onViewportClick(event) {
 function onPinClick(event, pin) {
   if (!editMode.value) return; // normal browsing: let the link navigate
   event.preventDefault();
+  if (suppressNextClick) {
+    suppressNextClick = false;
+    return; // this click is the tail end of a drag, not an intent to edit
+  }
   placing.value = false;
   formError.value = "";
   formState.value = { ...pin };
+}
+
+function onPinPointerDown(event, pin) {
+  if (!editMode.value || placing.value) return;
+  event.stopPropagation(); // don't pan the map or start placing a new pin
+  event.currentTarget.setPointerCapture(event.pointerId);
+  dragState = { id: pin.id, pointerId: event.pointerId, startX: event.clientX, startY: event.clientY, moved: false };
+}
+
+function onPinPointerMove(event, pin) {
+  if (!dragState || dragState.id !== pin.id || dragState.pointerId !== event.pointerId) return;
+  event.stopPropagation();
+  const dx = event.clientX - dragState.startX;
+  const dy = event.clientY - dragState.startY;
+  if (!dragState.moved && Math.hypot(dx, dy) < 4) return; // ignore jitter, keep it a click
+  dragState.moved = true;
+  const { x, y } = clientToStagePercent(event.clientX, event.clientY);
+  const idx = pinsList.value.findIndex((p) => p.id === pin.id);
+  if (idx !== -1) pinsList.value[idx] = { ...pinsList.value[idx], x, y };
+}
+
+async function onPinPointerUp(event, pin) {
+  if (!dragState || dragState.id !== pin.id || dragState.pointerId !== event.pointerId) return;
+  event.stopPropagation();
+  event.currentTarget.releasePointerCapture(event.pointerId);
+  const wasMoved = dragState.moved;
+  dragState = null;
+  if (wasMoved) {
+    suppressNextClick = true;
+    await persistPins(pinsList.value, "Moved");
+  }
 }
 
 function clientToStagePercent(clientX, clientY) {
@@ -400,6 +441,15 @@ async function persistPins(updated, verb) {
   padding: 0;
   font: inherit;
   cursor: pointer;
+  touch-action: none;
+}
+
+.map-pin.is-draggable {
+  cursor: grab;
+}
+
+.map-pin.is-draggable:active {
+  cursor: grabbing;
 }
 
 .map-pin-dot {

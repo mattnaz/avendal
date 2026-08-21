@@ -1,12 +1,5 @@
 [
   {
-    "id": "frostfel",
-    "label": "Frostfel",
-    "x": 54.5,
-    "y": 13.6,
-    "link": "/lore/frostfel"
-  },
-  {
     "id": "tharn-ulihm",
     "label": "Tharn Ulihm",
     "x": 47.8,
@@ -152,5 +145,12 @@
     "x": 67.3,
     "y": 90.3,
     "link": "/lore/lifford"
+  },
+  {
+    "id": "frostfel",
+    "label": "Frostfel",
+    "x": 53.3,
+    "y": 13.2,
+    "link": "/lore/frostfel"
   }
 ]
