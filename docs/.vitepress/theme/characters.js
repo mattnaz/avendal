@@ -1,5 +1,9 @@
 // Party roster. Add/edit entries here — portrait is any image under docs/public,
 // stats are the six ability scores, ac is Armor Class.
+//
+// status defaults to "active". Set status: "fallen" and add an epitaph to move
+// a character into the Fallen Heroes memorial section instead of the active
+// roster grid — they still get their own page at /roster/<id>.
 export const characters = [
   {
     id: "elara-swift",
@@ -33,5 +37,18 @@ export const characters = [
     stats: { str: 8, dex: 13, con: 11, int: 17, wis: 14, cha: 10 },
     description:
       "A scholar from Avendal City's arcane college, chasing a theory about the Sundering River that no one else takes seriously.",
+  },
+  {
+    id: "thorne-blackwood",
+    name: "Thorne Blackwood",
+    class: "Paladin",
+    level: 4,
+    ac: 17,
+    status: "fallen",
+    portrait: "/roster/placeholder-paladin.svg",
+    stats: { str: 16, dex: 10, con: 15, int: 9, wis: 13, cha: 15 },
+    description:
+      "A paladin of the Silver Oath, sworn to protect the innocent of Avendal City no matter the cost.",
+    epitaph: "Fell holding the bridge at Blackmire Swamp so the rest of the party could escape. Session 4.",
   },
 ];

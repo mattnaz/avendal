@@ -2,11 +2,12 @@
   <div v-if="character" class="character-page">
     <a :href="withBase('/roster/')" class="back-link">← Back to roster</a>
 
-    <div class="character-hero">
+    <div class="character-hero" :class="{ 'is-fallen': isFallen }">
       <img :src="withBase(character.portrait)" :alt="character.name" class="hero-bg" />
       <div class="hero-gradient" />
 
       <div class="hero-content">
+        <span v-if="isFallen" class="fallen-tag">🕊 Fallen</span>
         <h1 class="hero-name">{{ character.name }}</h1>
         <p class="hero-subtitle">Level {{ character.level }} · {{ character.class }}</p>
 
@@ -23,6 +24,11 @@
 
         <h2 class="hero-desc-heading">Description</h2>
         <p class="hero-description">{{ character.description }}</p>
+
+        <template v-if="isFallen && character.epitaph">
+          <h2 class="hero-desc-heading">In Memoriam</h2>
+          <p class="hero-epitaph">{{ character.epitaph }}</p>
+        </template>
       </div>
     </div>
   </div>
@@ -40,6 +46,7 @@ import { characters } from "../characters.js";
 
 const { params } = useData();
 const character = computed(() => characters.find((c) => c.id === params.value?.id));
+const isFallen = computed(() => character.value?.status === "fallen");
 
 const abilityKeys = ["str", "dex", "con", "int", "wis", "cha"];
 const abilityNames = {
@@ -170,6 +177,31 @@ const abilityNames = {
   opacity: 0.95;
 }
 
+.hero-epitaph {
+  margin: 0;
+  font-size: 1rem;
+  font-style: italic;
+  line-height: 1.6;
+  opacity: 0.9;
+}
+
+.fallen-tag {
+  display: inline-block;
+  margin-bottom: 0.6rem;
+  padding: 0.2rem 0.7rem;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.15);
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.character-hero.is-fallen .hero-bg {
+  filter: grayscale(70%) brightness(0.75);
+}
+
 .character-not-found {
   padding: 4rem 1.5rem;
   text-align: center;
@@ -222,9 +254,16 @@ const abilityNames = {
   }
 
   .hero-desc-heading,
-  .hero-description {
+  .hero-description,
+  .hero-epitaph {
     opacity: 1;
     color: var(--vp-c-text-2);
+  }
+
+  .fallen-tag {
+    background: var(--vp-c-bg-soft);
+    border-color: var(--vp-c-border);
+    color: var(--vp-c-text-1);
   }
 }
 </style>
