@@ -52,6 +52,7 @@
           @pointerdown="onPinPointerDown($event, pin)"
           @pointermove="onPinPointerMove($event, pin)"
           @pointerup="onPinPointerUp($event, pin)"
+          @pointercancel="onPinPointerCancel($event, pin)"
           @click="onPinClick($event, pin)"
         >
           <span class="map-pin-dot" />
@@ -219,8 +220,12 @@ function onPinClick(event, pin) {
 
 function onPinPointerDown(event, pin) {
   if (!editMode.value || placing.value) return;
-  event.stopPropagation(); // don't pan the map or start placing a new pin
+  event.stopPropagation(); // don't start placing a new pin
   event.currentTarget.setPointerCapture(event.pointerId);
+  // panzoom listens for its own mousedown/touchstart on the stage regardless of
+  // this pointerdown's propagation, so it keeps panning underneath a drag
+  // unless it's explicitly paused for the duration of the drag.
+  instance?.pause();
   dragState = { id: pin.id, pointerId: event.pointerId, startX: event.clientX, startY: event.clientY, moved: false };
 }
 
@@ -242,10 +247,17 @@ async function onPinPointerUp(event, pin) {
   event.currentTarget.releasePointerCapture(event.pointerId);
   const wasMoved = dragState.moved;
   dragState = null;
+  instance?.resume();
   if (wasMoved) {
     suppressNextClick = true;
     await persistPins(pinsList.value, "Moved");
   }
+}
+
+function onPinPointerCancel(event, pin) {
+  if (!dragState || dragState.id !== pin.id || dragState.pointerId !== event.pointerId) return;
+  dragState = null;
+  instance?.resume();
 }
 
 function clientToStagePercent(clientX, clientY) {
